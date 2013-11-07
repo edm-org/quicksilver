@@ -115,7 +115,7 @@ class Quicksilver
             }
             $mongoConf = $this->__options['mongo'];
             $mongo = new \Mongo('mongodb://' . $mongoConf['hosts'], array('replicaSet' => $mongoConf['replicaSet']));
-            $this->__mongoDb = $mongo->selectDB($mongoConf['database']);
+            $mongoDb = $mongo->selectDB($mongoConf['database']);
         }
         $this->__mongoDb = $mongoDb;
         return $this->__coll = $mongoDb->selectCollection($this->__options['mongo']['collection']);
