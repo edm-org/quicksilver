@@ -73,7 +73,7 @@ class Quicksilver
      *                       to the collection. This is usually 'now', but can
      *                       back-date in cases like if your server went down
      *                       and you want to perform historically queued actions.
-     *                       This is subject to the TTL of your MongoCollection
+     *                       This is subject to the cap of your MongoCollection
      *
      * @return null|MongoCursor
      * @throws \Exception
