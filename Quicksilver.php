@@ -125,7 +125,7 @@ class Quicksilver
                 throw new Exception('Could not initiate Mongo because you have not set the options for Quicksilver');
             }
             $mongoConf = $this->__options['mongo'];
-            $mongo = new \Mongo('mongodb://' . $mongoConf['hosts'], array('replicaSet' => $mongoConf['replicaSet']));
+            $mongo = new \MongoClient('mongodb://' . $mongoConf['hosts'], array('replicaSet' => $mongoConf['replicaSet']));
             $mongoDb = $mongo->selectDB($mongoConf['database']);
         }
         $this->__mongoDb = $mongoDb;
