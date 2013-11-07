@@ -5,31 +5,38 @@ use Utility\Quicksilver;
 
 class SimpleSend
 {
+    private $__options;
 
-    public function getOptions()
+    public function __construct(array $options)
     {
-        $options = array(
-            'mongo' =>
-            array(
-                'hosts' => 'localhost',
-                'replicaSet' => '',
-                'database' => 'test',
-            ),
-        );
-        $options['mongo']['collection'] = 'messages';
-        return $options;
+        $this->__options = $options;
     }
 
-    public function send()
+    protected function _getOptions()
     {
-        $quick = new Quicksilver($this->getOptions());
+        return $this->__options;
+    }
+
+    public function send($message)
+    {
+        $quick = new Quicksilver($this->_getOptions());
         $quick->initMongo();
-        $message = array('type' => 'redis', 'command' => 'flushAll', 'params' => array());
-        $quick->send($message, array('this', 'that'));
+        $quick->send($message, array('redis', 'foobar'));
     }
-
 }
 
-$send = new SimpleSend();
+$send = new SimpleSend(
+    array(
+        'mongo' =>
+        array(
+            'hosts'      => 'localhost',
+            'replicaSet' => '',
+            'database'   => 'test',
+            'collection' => 'messages',
+        )
+    )
+);
 
-$send->send();
+$send->send(
+    $message = array('type' => 'redis', 'command' => 'flushAll', 'params' => array())
+);
