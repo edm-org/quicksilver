@@ -2,8 +2,7 @@
 
 namespace Utility;
 
-use Utility\Hash,
-    Exception,
+use Exception,
     MongoDB,
     MongoDate;
 
@@ -17,7 +16,6 @@ use Utility\Hash,
  * In order to make it work properly, servers must be syncronrized (ntp) 
  * @author EDM <EDMDev@excitedigitalmedia.com>
  * @category Utility
- * @link http://screens/index.php?title=Quicksilver Wiki site
  */
 class Quicksilver
 {
@@ -140,7 +138,7 @@ class Quicksilver
         if(!isset($options['mongo']['awaitingData'])){
             $options['mongo']['awaitingData'] = false;
         }
-        $this->__options = Hash::merge($this->__options, $options);
+        $this->__options = array_merge($this->__options, $options);
     }
 
     /** Sends a message to an array of channels * 
