@@ -77,10 +77,10 @@ class Quicksilver
             if (!isset($this->__coll)) {
                 throw new Exception('There is no active mongo collection');
             }
-            $conditions = [
-                'timestamp' => ['$gt' => new MongoDate($timestamp)],
-                'channels' => ['$in' => $this->getSubscribed()],
-            ];
+            $conditions = array(
+                'timestamp' => array('$gt' => new MongoDate($timestamp)),
+                'channels' => array('$in' => $this->getSubscribed()),
+            );
             $this->__cursor = $this->__coll
                     ->find($conditions)
                     ->tailable(true)
