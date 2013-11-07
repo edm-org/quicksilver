@@ -135,7 +135,7 @@ class Quicksilver
             throw new Exception('Quicksilver options must be an array');
         }
         if (!isset($options['mongo'])) {
-            throw new Exception('Parameter 'mongo' is required in options array');
+            throw new Exception('Parameter "mongo" is required in options array');
         }
         if(!isset($options['mongo']['awaitingData'])){
             $options['mongo']['awaitingData'] = false;
