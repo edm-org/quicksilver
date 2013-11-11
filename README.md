@@ -12,7 +12,7 @@ In order to work, Quicksilver needs the Mongo extension for PHP.
 In MongoDB we need a capped collection. 
 http://docs.mongodb.org/manual/core/capped-collections/
 
-    db.createCollection( "messages", { capped: true, size: 100000 } )
+    db.createCollection("messages", { capped : true, size : 5242880, max : 500 } )
 
 
 
